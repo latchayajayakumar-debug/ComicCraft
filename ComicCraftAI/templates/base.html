@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {% block title %}
+        {{ app_name }}
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a
+        class="brand"
+        href="/"
+    >
+        🦸 ComicCraft
+    </a>
+
+    <nav>
+
+        <a href="/">
+            Create
+        </a>
+
+        <a href="/test-image">
+            Test Image
+        </a>
+
+        <a href="/docs">
+            API Docs
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="page">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<script
+    src="/static/js/app.js"
+></script>
+
+</body>
+
+</html>

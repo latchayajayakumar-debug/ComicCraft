@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+Image Test — {{ app_name }}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-heading">
+
+    <span class="eyebrow">
+        DEVELOPER TOOL
+    </span>
+
+    <h1>
+        Test image generation
+    </h1>
+
+    <p>
+        Use this page to verify the
+        Hugging Face image API independently.
+    </p>
+
+</section>
+
+
+{% if error %}
+
+<div class="alert error">
+
+    <strong>
+        Image error:
+    </strong>
+
+    {{ error }}
+
+</div>
+
+{% endif %}
+
+
+<section class="card form-card">
+
+    <form
+        action="/test-image"
+        method="post"
+    >
+
+        <label>
+
+            Image Prompt
+
+            <textarea
+                name="prompt"
+                required
+                placeholder="A brave fox in an enchanted forest, colorful comic-book illustration"
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="primary"
+            type="submit"
+        >
+            Generate Test Image
+        </button>
+
+    </form>
+
+
+    {% if image_url %}
+
+    <div class="test-result">
+
+        <h2>
+            Generated image
+        </h2>
+
+        <img
+            src="{{ image_url }}"
+            alt="Generated test image"
+        >
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

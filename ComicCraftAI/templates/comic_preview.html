@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}
+Comic Preview — {{ app_name }}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-heading">
+
+    <span class="eyebrow">
+        YOUR COMIC
+    </span>
+
+    <h1>
+        Preview the story
+    </h1>
+
+    <p>
+        Review each panel before downloading
+        the PDF.
+    </p>
+
+</section>
+
+
+<div class="actions">
+
+    <a
+        class="primary button"
+        href="/export/{{ comic.comic_id }}"
+    >
+        ⬇ Download Your Comic as PDF
+    </a>
+
+
+    <a
+        class="secondary button"
+        href="/export-success?comic_id={{ comic.comic_id }}"
+    >
+        View Export Page
+    </a>
+
+</div>
+
+
+<section class="comic-grid">
+
+{% for panel in comic.panels %}
+
+<article class="comic-panel">
+
+    <div class="panel-title">
+
+        Panel {{ panel.panel_number }}
+        ·
+        {{ panel.title }}
+
+    </div>
+
+
+    <img
+        src="{{ panel.image_url }}"
+        alt="Illustration for panel {{ panel.panel_number }}"
+        loading="lazy"
+    >
+
+
+    <div class="panel-body">
+
+        <p class="scene">
+
+            {{ panel.scene_description }}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Caption:
+            </strong>
+
+            {{ panel.caption }}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Narration:
+            </strong>
+
+            {{ panel.narration }}
+
+        </p>
+
+
+        {% if panel.dialogue %}
+
+        <p class="dialogue">
+
+            “{{ panel.dialogue }}”
+
+        </p>
+
+        {% endif %}
+
+
+        <details>
+
+            <summary>
+                Image prompt reference
+            </summary>
+
+            <p>
+                {{ panel.image_prompt }}
+            </p>
+
+        </details>
+
+    </div>
+
+</article>
+
+{% endfor %}
+
+</section>
+
+{% endblock %}

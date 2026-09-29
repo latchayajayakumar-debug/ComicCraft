@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Export — {{ app_name }}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="success-card card">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <span class="eyebrow">
+        EXPORT
+    </span>
+
+
+    <h1>
+        Your comic is ready.
+    </h1>
+
+
+    <p>
+        Your comic has been prepared
+        as a PDF.
+    </p>
+
+
+    {% if comic_id %}
+
+    <div class="actions">
+
+        <a
+            class="primary button"
+            href="/export/{{ comic_id }}"
+        >
+            ⬇ Download PDF
+        </a>
+
+
+        <a
+            class="secondary button"
+            href="/comic/{{ comic_id }}"
+        >
+            Back to Preview
+        </a>
+
+    </div>
+
+    {% else %}
+
+    <a
+        class="primary button"
+        href="/"
+    >
+        Create Another Comic
+    </a>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}
